@@ -1,0 +1,93 @@
+1. A line of people at an amusement park ride:
+
+var riders = [ "Vivian", "Ava", "Josh", "Patrick", "Mike" ]
+
+riders.push("Mary");
+
+console.log(riders)
+
+console.log(riders.indexOf('Josh'));
+
+var name = '';
+
+function findRider(name){
+     for(var i = 0; i <= riders.length; i++){
+	if(riders[i] === name) {
+	     return riders.indexOf(name);
+	} 
+	console.log("Rider not found");
+     }
+
+console.log(findRider('Josh'));
+console.log(findRider('Emily'));
+
+riders.splice(1, 0, 'Melissa');
+
+riders.indexOf('Patrick');
+
+riders.splice(4, 1);
+
+2. Provide another real-world example that you can model using a data structure:
+
+You own a pizza delivery place that offers several different pies and allows them to be delivered on the hour using a 24hr clock between 10am and 3am.
+
+var pizzaOrders = [
+	{name: 'jon',
+	 pizza: 'hawaiian',
+	 time: 12},
+	{name: 'janis',
+	 pizza: 'pepperoni',
+	 time: 15},
+	{name: 'tim',
+	 pizza: 'cheese',
+	 time: 11},
+	{name: 'kathy',
+	 pizza: 'vegan'
+	 time: 22},
+	{name: 'blixa',
+	 pizza: 'meat lovers',
+	 time: 2,}  
+]
+
+
+You receive a new pizza order:
+
+function newOrder(name, pizza, time) {
+     
+     if(time < 3 || time > 10){
+	pizzaOrders.push({name, pizza, time});
+     } else {
+	console.log("please choose a time when we are making pizza");
+     }
+}
+
+
+You would like to sort your orders by time:
+
+pizzaOrders.sort(function(a,b) {
+     return a.time - b.time;
+});
+
+
+You would like to sort your orders by name:
+
+pizzaOrders.sort(function(a,b) {
+     var nameA = a.name;
+     var nameB = b.name;
+
+     if(nameA < nameB){
+	return -1;
+     }
+     if(nameA > nameB) {
+	return 1;
+     }
+     return 0;
+});
+
+
+
+3. Using an object in an array allows you to store more data efficiently in the array and access the data. You can easily change and remove objects and object elements. 
+
+
+
+
