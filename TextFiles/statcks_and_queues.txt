@@ -1,0 +1,56 @@
+Exercises:
+
+1. What is the main difference between a stack and a queue? 
+	Stacks deal with data in a Last In First Out structure, where queues use First In First Out. 
+
+2. What are the similarities between stacks and queues? 
+	They are both used to handle data flow. Stacks use push and pop to add data to the stack. Stacks use LIFO and queues use FIFO. Both can be used but queues are more common. 
+
+3. Imagine you are an engineer tasked with implementing the UNDO and REDO option in a word processor such as Microsoft Word. Which data structure would you use for each option and why? 
+	UNDO option could be done easily by using a stack because the last piece of data could be easily removed do to LIFO principals. The REDO option could be done using FIFO because the first object pulled out would be put back again. 
+
+
+
+Programming Questions:
+
+1. Given a string, reverse it using a stack. For example, the string "Bloc!" Should be converted to "!colB".
+
+FUNCTION REVERSE(word)
+     INIT a new stack
+     FOR each character in word
+	 CALL stack.push WITH character
+     END FOR
+     INIT reversed to empty string
+     WHILE stack is not empty
+	 CALL stack.pop RETURNING character
+	 APPEND character to reversed
+     END WHILE
+     RETURN reversed
+END FUNCTION
+
+
+2. Implement the delete functionality of a stack using one queue. Make a FIFO data structure mirror the functionality of a LIFO data structure.
+
+CLASS Stack
+     FUNCTION pop(queue)
+	SET item to the last element
+	REMOVE LAST element of list from list
+	RETURN item
+     END FUNCTION
+END CLASS 
+
+
+3. Fill in the methods for the following Queue class so that it will work as expected (FIFO).
+
+CLASS QUEUE
+     FUNCTION enqueue(element)
+	APPEND element to the end of the list
+     END FUNCTION
+
+     FUNCTION dequeue
+	SET item to the first element
+	REMOVE FIRST element of list from list
+	RETURN item
+     END FUNCTION
+END CLASS
+
