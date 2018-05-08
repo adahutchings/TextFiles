@@ -1,0 +1,57 @@
+Exersises
+
+1. What are some pros and cons of using linked lists instead of arrays?
+	Linked lists don't require sequential data storage where arrays do. Arrays elements can be accessed at will where linked lists have to go through each node until they find the one called. 
+
+2. Come up with a real world example of a linked list.
+	In a scavenger hunt you have a list of things to get to the treasure, however you cannot skip the steps to find it. You have to follow the first clue to the second and the second the third and so on. 
+
+Programming Questions
+
+1. The Linked List push function should take a value, create a node, and add it to the end of a list. Below is a push function for a singly linked list. However, there is something wrong with it. Find the bug and fix the code.
+
+LinkedList.prototype.push = function(element) {
+     SET node = {
+	value: element,
+	next: null
+}
+
+     IF the head node does not exist {
+	THEN SET head to node
+	}
+     ELSE {
+	SET current node to head
+	SET current.next to node.next
+     }
+}
+
+2. Given an unsorted singly linked list, remove all duplicates from the linked list.
+
+FUNCTION findDuplicate(headNode, item)
+     SET tempNode to headNode
+     WHILE tempNode exists AND NOT (tempNode.item = item)
+	SET tempNode to temNode.next
+     END WHILE
+     RETURN tempNode
+END FUNCTION	     
+
+3. Given an unsorted singly linked list, reverse it.
+
+FUNCTION reverse(headNode)
+
+     SET currentNode to headNode
+     SET nextNode to null
+     SET previousNode to null
+
+     WHILE currentNode does not equal null 
+	SET nextNode to currentNode.next
+	SET currentNode.next to previousNode
+	SET previousNode to currentNode
+	SET currentNode to nextNode
+     END WHILE
+
+     SET headNode to previousNode
+
+END FUNCTION
+
+
