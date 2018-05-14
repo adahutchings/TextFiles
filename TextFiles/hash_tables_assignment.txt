@@ -22,13 +22,198 @@ Exercises:
 
 6. Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table. 
 
+function HashTable(size) {
+  this.values = {};
+  this.numberOfValues = 0;
+  this.size = size;
+};
+
+HashTable.prototype.add = function(key, value) {
+  var hash = this.calculateHash(key);
+  if(!this.values.hasOwnProperty(hash)) {
+    this.values[hash] = {};
+  }
+  if(!this.values[hash].hasOwnProperty(key)) {
+    this.numberOfValues++;
+  }
+  this.values[hash][key] = value;
+};
+
+HashTable.prototype.search = function(key) {
+  var hash = this.calculateHash(key);
+  if(this.values.hasOwnProperty(hash) && this.values[hash].hasOwnProperty(key)) {
+    return this.values[hash][key];
+  } else {
+    return null;
+  }
+};
+
+HashTable.prototype.print = function() {
+  var string = '';
+  for(var value in this.values) {
+    for(var key in this.values[value]) {
+      string += this.values[value][key] + ' ';
+    }
+  }
+  console.log(string.trim());
+};
+
+var customerDirectory = new HashTable(10);
 
 
 
- 
 
 7. Build a system that allows a store owner to track their store's inventory using a hash table for storage.
+
+var hash = function (string, max) {
+  var hash = 0;
+  for (var i = 0; i <string.length; i++){
+    hash += string.charCodeAt(i);
+  }
+  return hash % max;
+};
+
+var HashTable = function(){
+  var storage = [];
+  var storageLimit = 100;
+  
+  this.add = function(key, value){
+    var index = hash(key, storageLimit);
+    
+    if (storage[index] === undefined) {
+      storage[index] = [
+        [key, value]
+      ];
+    } else {
+      var input = false;
+      
+      for(var i = 0; i < storage[index].length; i++) {
+        if(storage[index][i][0] === key) {
+          storage[index][i][1] = value;
+          input = true;
+        }
+      }
+      
+      if (input === false){
+        storage[index].push([key, value]);
+      }
+    }
+  };
+  
+  this.findItem = function(key) {
+    var index = hash(key, storageLimit);
+    
+    if(storage[index] === undefined) {
+      console.log("Item Not Found");
+    } else {
+      for (var i = 0; i < storage[index].length; i ++) {
+        if (storage[index][i][0] === key) {
+          console.log( storage[index][i][0] + " : " + storage[index][i][1]);
+        }
+      }
+    }
+  };
+  
+  this.showInventory = function(){
+    console.log(storage);
+  };
+  
+};
+
+var storeInventory = new HashTable();
+
 
 
 
 8. Build a system that allows digital copies of newspapers to be entered and searched by a publisher and publication date. Use hash tables to store the necessary data.
+
+var hash = function (string, max) {
+  var hash = 0;
+  for (var i = 0; i <string.length; i++){
+    hash += string.charCodeAt(i);
+  }
+  return hash % max;
+};
+
+var HashTable = function(){
+  var storage = [];
+  var storageLimit = 100;
+  
+  this.add = function(articleName, publisherName, date){
+    var index = hash(articleName, storageLimit);
+    
+    if (storage[index] === undefined) {
+      storage[index] = [
+        [articleName, publisherName, date]
+      ];
+    } else {
+      var input = false;
+      
+      for(var i = 0; i < storage[index].length; i++) {
+        if(storage[index][i][0] === articleName) {
+          storage[index][i][1] = publisherName;
+          storage[index][i][2] = date;
+          input = true;
+        }
+      }
+      
+      if (input === false){
+        storage[index].push([articleName, publisherName, date]);
+      }
+    }
+  };
+  
+  this.searchArticlesByName = function(articleName) {
+    var index = hash(articleName, storageLimit);
+    
+    if (storage[index] === undefined){
+      console.log("Article Not Found");
+    } else {
+      for(var i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === articleName) {
+          console.log("Publisher: " + storage[index][i][1] + ",  Date: " + storage[index][i][2]);
+        }
+      }
+    }
+  };
+  
+  this.searchArticlesByPublisher = function(publisherName) {
+    var index = hash(publisherName, storageLimit);
+    
+    if (storage[index] === undefined) {
+      console.log("Publisher Not Found")
+    } else {
+      for (var i = 0; i < storage[index].length; i++){
+        if(storage[index][i][1] === publisherName) {
+        console.log(storage[index][i][2] + " published : " + storage[index][i][0]);
+      }
+    }
+    }
+  };
+  
+  this.searchArticlesByDate = function(date) {
+    var index = hash(date, storageLimit);
+    
+    if(storage[index] === undefined) {
+      console.log("Date Not Found");
+    } else {
+      for (var i = 0; i < storage[index].length; i ++) {
+        if (storage[index][i][2] === date) {
+          console.log("Published: " + storage[index][i][2]);
+        }
+      }
+    }
+  };
+  
+  this.showAllArticles = function(){
+    console.log(storage);
+  };
+  
+};
+
+var newspaperArticles = [
+  { article: "", publisher: "", date: ""}
+];
+
+
+var newspaperStorage = new HashTable();
