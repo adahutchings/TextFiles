@@ -15,18 +15,16 @@ Programming Questions:
 
 1. Given a string, reverse it using a stack. For example, the string "Bloc!" Should be converted to "!colB".
 
-FUNCTION REVERSE(word)
-     INIT a new stack
-     FOR each character in word
-	 CALL stack.push WITH character
-     END FOR
-     INIT reversed to empty string
-     WHILE stack is not empty
-	 CALL stack.pop RETURNING character
-	 APPEND character to reversed
-     END WHILE
-     RETURN reversed
-END FUNCTION
+function stringReverse(word) {
+  var reversedString = [];
+  
+  for( var i = 0; i <= word.length; i++){
+    reversedString.push(word.charAt(word.length - i));
+  }
+  return reversedString.join("");
+}
+
+console.log(stringReverse("bloc"));
 
 
 2. Implement the delete functionality of a stack using one queue. Make a FIFO data structure mirror the functionality of a LIFO data structure.
