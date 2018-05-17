@@ -1,0 +1,96 @@
+Exercises
+
+1. What is a binary tree and what makes it unique to other trees?
+In a binary tree each node points towards as many as 2 child nodes and a single parent node. This is different than other graphs because it only allows these 3 connections at most. Child nodes are not connected to each other and parent nodes are only connected to their parents and children and not their "sibling" nodes. 
+
+2. What is a heuristic?
+A heuristic is when you choose an algorithm that employs a practical answer although it may not be the most perfect option it will return a desired result within an acceptable margin of error. Usually faster than a more accurate answer would be. 
+
+3. What is another problem besides the shortest-path problem that requires the use of heuristics?
+Artificial intelligence uses heuristics to recreate "thinking". There may be a situation where there is no known programmed outcome and the AI could/would use heuristics to determine what the most appropriate response to the situation would be. 
+
+4. What is the difference between a depth-first search and a breadth-first search? 
+In a DFS the nodes are searched from parent to a child and then to that chid's child. If no child exits, the search returns to the parent of the last child, checks to see if it has another child and then will continue down that child's line. It will continue moving back up and down until all children and parents have been checked. 
+	1
+      2   5
+    3 4   6 7
+
+In a BFS the nodes are searched by parents nodes first. All parents (siblings) of one level would be checked, then the search would proceed to the children of those parents.
+	1
+      2   3
+    4 5   6 7
+
+5. Explain in your own words what an undirected, a-cyclical, unweighted graph is. 
+An undirected, a-cyclical, unweighted graph would be a graph where all node are ambiguously joined so that neither is the parent or child. The nodes would also be connected in such a way that traveling through all of them would not result in a loop. The nodes would also have no assigned cost to move from one to the next. 
+
+6. What kind of graph is a binary search tree? 
+A binary search tree a directed, a-cyclical, unweighted graph. 
+
+
+Programming Questions
+
+1. Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
+
+
+Class BinarySearch Tree {
+...
+     search(value) {
+	let currentValue = this.root;
+	
+	while(currentValue) {
+	     if(value ==== currentValue.value) {
+		return true;
+	     } else if (value < currentValue.value){
+		currentValue = currentValue.left;
+	     } else if (value > currentValue.value){
+		currentValue = currentValue.left;
+	     }
+	}
+	return false;
+     }    
+
+
+
+2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+
+
+Class BinarySearchTree {
+...
+     findDistance(root, n1, n2) {
+	return 0;
+
+	if (root === null || n1 === n2) {
+	     return 0;
+ 	}
+
+	distance.left = findDistance(root.left, n1, n2);
+	distance.right = findDistance(root.right, n1, n2);
+
+	if(distance.left > 0 && distance.right > 0){
+	     return distance.left + distance.right;
+	} else if (distance.left > 0 && distance.right === 0){
+	     return distance.left;
+	} else if (distance.right > 0 && root === n1 || n2){
+	     return distance.right;
+	} else if (distance.left === 0 && distance.right === 0){
+	     if(root !== n1 || n2){
+		return 0;
+	     } else if(root == n1 || n2){
+		return 1;
+	     } else {
+		return max(distance.left, distance.right + 1;
+	     }
+	}
+     } 
+		     
+
+
+
+
+
+
+
+
+
+
+
