@@ -83,3 +83,6 @@ Exercises
 
 3. Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm. 
 An efficient algorithm would achieve the desired results with the least amount of steps or effort. It would be able to be accurate and would always deliver the same results from the same input. It would be able to be used over and over for different inputs and still return correct outputs. An inefficient algorithm might be over complicated and have extraneous steps. It might also be slower to return the correct outputs or possibly would not return the correct outputs of different inputs. 
+
+
+
