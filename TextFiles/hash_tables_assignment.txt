@@ -139,67 +139,54 @@ var HashTable = function(){
   var storage = [];
   var storageLimit = 100;
   
-  this.add = function(articleName, publisherName, date){
-    var index = hash(articleName, storageLimit);
+  this.add = function(publisher, date, article){
+    var index = hash(publisher, storageLimit);
     
     if (storage[index] === undefined) {
       storage[index] = [
-        [articleName, publisherName, date]
+        [ publisher, date, article]
       ];
     } else {
       var input = false;
       
       for(var i = 0; i < storage[index].length; i++) {
-        if(storage[index][i][0] === articleName) {
-          storage[index][i][1] = publisherName;
-          storage[index][i][2] = date;
+        if(storage[index][i][0] === publisher) {
+          storage[index][i][1] = date;
+          storage[index][i][2] = article;
           input = true;
         }
       }
       
       if (input === false){
-        storage[index].push([articleName, publisherName, date]);
+        storage[index].push([publisher, date, article]);
       }
     }
   };
   
-  this.searchArticlesByName = function(articleName) {
-    var index = hash(articleName, storageLimit);
-    
-    if (storage[index] === undefined){
-      console.log("Article Not Found");
-    } else {
-      for(var i = 0; i < storage[index].length; i++) {
-        if (storage[index][i][0] === articleName) {
-          console.log("Publisher: " + storage[index][i][1] + ",  Date: " + storage[index][i][2]);
-        }
-      }
-    }
-  };
   
-  this.searchArticlesByPublisher = function(publisherName) {
+  this.searchByPublisher = function(publisherName) {
     var index = hash(publisherName, storageLimit);
     
     if (storage[index] === undefined) {
       console.log("Publisher Not Found")
     } else {
       for (var i = 0; i < storage[index].length; i++){
-        if(storage[index][i][1] === publisherName) {
-        console.log(storage[index][i][2] + " published : " + storage[index][i][0]);
+        if(storage[index][i][0] === publisher) {
+        console.log("Date: " + storage[index][i][1] + " Article: " + storage[index][i][2]);
       }
     }
     }
   };
   
-  this.searchArticlesByDate = function(date) {
+  this.searchByDate = function(date) {
     var index = hash(date, storageLimit);
     
     if(storage[index] === undefined) {
       console.log("Date Not Found");
     } else {
       for (var i = 0; i < storage[index].length; i ++) {
-        if (storage[index][i][2] === date) {
-          console.log("Published: " + storage[index][i][2]);
+        if (storage[index][I][1] === date) {
+          console.log("Published: " + storage[index][i][2] + " Publisher: " + storage[index][i][0]);
         }
       }
     }

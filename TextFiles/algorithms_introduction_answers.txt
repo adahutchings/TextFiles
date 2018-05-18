@@ -1,0 +1,85 @@
+Exercises
+
+1. Using Proper pseudo-code, describe the following primitive algorithms:
+- Making coffee
+
+	SET waterInPot to True 
+
+
+	SET waterTemp TO 100c
+	IF waterTemp is less than 100c
+		Leave water on stove
+	END IF
+	ELSE
+		Remove water from stove
+	END ELSE 
+	
+	IF coffee in filter EQUALS false
+		ADD coffee to filter
+	END IF
+
+	IF coffee in filter EQUALS true AND waterTemp is equal to or greater than 100c
+		WHILE waterInPot is true
+			Pour water over coffee
+		END WHILE
+	END IF
+	
+	
+
+
+
+- Washing dishes
+	SET dishStack to number of dishes
+	WHILE dishStack does not equal 0
+		IF dishRinsed = false
+			Rinse dish
+			Wash dish
+			Dry dish
+		END IF
+		ELSE
+			Wash dish
+			Dry dish
+			
+		END ELSE
+
+	END WHILE
+			
+
+
+- A choice of your own - Getting dressed
+	IF wearingPants IS EQUAL TO false
+		IF wearing socks IS EQUAL TO false
+			put on socks
+		END IF
+
+		Put on pants
+		IF pantsAreTooBig IS EQUSL TO true
+			Put on belt
+		END IF
+		SET wearingPants TO true
+	END IF
+
+	IF wearingShirt IS EQUAL TO false
+		IF weather IS EQUAL TO cold
+			Put on longSleeveShirt
+		ELSE
+			Put on shortSleeveShirt
+		END IF
+		
+		SET wearingShirt TO true
+	END IF
+
+	IF wearingShirt AND wearingPants ARE EQUAL TO true
+		Put on shoes
+	END IF
+
+
+
+
+2. As with the knot algorithm, there may be more than one way to solve the problem. It is essential to try to pick the best algorithm for a situation. Name three companies who created an algorithm that made them successful, e.g. Google's search algorithm. It doesn't need to be a tech example (suck as a recipe or manufacturing a product). Google's algorithm produces more relevant results than other search engines; what about each of your cases make them stand out? 
+-McDonalds : Created an algorithm for producing the same burger over and over in a shorter amount of time with little extraneous movements. They modeled their whole business from the beginning to be extremely precise and efficient at producing their ideal product. This was so successful because not only did the time to get your food decrease dramatically, but the product always tasted the exact same way.  
+-Facebook : Famous or infamous depending on how you look at it for creating algorithms that "better user experience" Some people recently have found these invasive or controversial. Their algorithm is designed to show you content that you would find the most appealing. 
+-OKCupid : OKCupid developed an algorithm that is supposed to match you with similar users based off your profile entries and a series of questions that you can answer at will. The more questions the more information the algorithm has and the better it should be at matching you with an accurate match. Many people use OKCupid because they feel that the algorithm gives them better results than other dating sites. 
+
+3. Hypothesize about what constitutes an efficient algorithm versus an inefficient algorithm. 
+An efficient algorithm would achieve the desired results with the least amount of steps or effort. It would be able to be accurate and would always deliver the same results from the same input. It would be able to be used over and over for different inputs and still return correct outputs. An inefficient algorithm might be over complicated and have extraneous steps. It might also be slower to return the correct outputs or possibly would not return the correct outputs of different inputs. 
