@@ -1,0 +1,87 @@
+Exercises
+
+1. Define and compare recursion and iteration.
+	Recursion is when a function calls itself until it reaches the base case. Iteration uses a loop to repeat a procedure. They both repeatedly execute instructions, but in different manners. 
+
+2. Name five algorithms that are commonly implemented by recursion.
+	Greatest Common Denominator (Divisor)
+	Fibonacci Sequence 
+	Factorial of Number
+	Recursive Binary Search
+	Tower of Hanoi
+
+3. When should you use iteration, and when should you avoid recursion? Give examples for each.
+	If the iteration is too convoluted it may be easier to use recursion. Recursion is often slower that iterative methods but may be easier to code. 
+		example: Fibonacci 
+	If time is more important use iteration
+		example: Finding maximum
+
+4. Compare the recursive and iterative solutions to the three algorithms from the checkpoint (Factorial, Maximum, and Fibonacci). What is similar, and what is different?
+	Factorial - Both recursive and iterative do not work with negative numbers. They both check if the number is greater than 0, but the recursive also checks to see if the number is 0 or 1 before calling itself with the original parameter minus 1 then multiplies it by the previous factorial. The iteration uses a for loop taking parameter and iterating through until it reaches 2, setting the result times the value in the index. 
+	Maximum - The recursive method is much more bulky than the iterative in this case. It goes through the array of numbers pulling one off the head each time until it reaches the tail. Once there it goes back through the list and compares the current number to the numbered pulled at that index and returns whichever is highest until it reaches the head again. In the iterative it sets a variable to the first number in the array, then using a for loop it takes the number incrementing indues and compares it to the set current max, if that number is higher it reassigns the variable to that element and continues through the array. At the end it returns the highest value. 
+	Fibonacci - In the recursive it takes in a number and will return 1 if 1 or two has been entered. If not it calls itself with the original parameter number minus two, then calls itself again with the original parameter number minus 1. Then it returns the minus 1 plus minus 2. The iterative takes in a number parameter then uses variables to set previous and current. Then it uses a for loop setting the i to 3 and iterates the loop until it reaches the original parameter number, each time assigning the new current number variable to the previous plus the current, resets the previous to the current and the current to the new current. Eventually it will return the current number. 
+
+	All of these return the same results but go about it in different manners, in some instances like fibonacci the recursive is simpler in code, but in others like maximum the iterative is much easier to write and follow. 
+
+
+5. Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire collection.
+
+var findItemTotal = function(array, counter) {
+  
+  
+  if (counter < array.length){
+     return counter++ + findItemTotal(array, counter);
+     
+  } else {
+    return counter;
+  }
+  
+  
+};
+
+var counter = 0;
+var array = [1, 2, 3, 4, 5, 6, 7];
+
+console.log(findItemTotal(array, counter));
+// returns 28	
+
+
+
+6. A palindrome is a world or phrase whose spelling is the same either direction. Write a recursive algorithm to determine if a given word or phrase is a palindrome.
+
+var reverseWord = function(word) {
+  
+  if (word === "") {
+    return "";
+  } else {
+    return reverseWord(word.substr(1)) + word.charAt(0);
+  } 
+  
+}
+
+
+console.log(reverseWord("hello"));
+// returns "olleh"
+
+
+7. Laura and Xander are going door-to-door around their block looking for their lost cat. Write a recursive algorithm showing one way they can visit every house on their block exactly once. 
+
+var toVisit = 10;
+var visited = 0;
+
+
+
+function findCat(visited, toVisit){
+  if (visited < toVisit) {
+    toVisit--;
+    console.log("visited");
+    findCat(visited, toVisit);
+  } else if (toVisit === 0) {
+    console.log("all houses visited");
+  }
+}
+
+findCat(visited, toVisit);
+
+
+
