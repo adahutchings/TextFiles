@@ -1,0 +1,64 @@
+Short Answer
+
+1. What is a real-life scenario that uses linear search?
+	You are searching for a piece of pottery bisque on a shelf none of the pieces have been glazed and you have to find your pieces. You have no idea of the order of the shelf so you have to pick up each item, check for you name, and return items that don't belong to you to the shelf. In order to find the correct items you have to search one at a time in the order the pieces are currently displayed. 
+
+2. What is a real-life scenario that uses binary search?
+	You are looking for the name "Smith" in a phone book. You open the phone book to the middle. You are currently on the letter N. You know that "S" comes after "N" so you take the second half of the phone book and split it in half. You are now at "U". You know that "U" comes after "S" and split the first half of N-U into half. You are now on "P", "S" comes after "P" so you split the section from "P" to "U" in half and are now at "S". You continue to split the "S" names until you have reached "Smith". 
+
+3. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using linear search?
+	Seven. 
+
+4. Given the alphabetically sorted collection in this checkpoint, how many iterations would it take to find the value G using binary search?
+	Four.
+
+5. Given an unsorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+	Given that the collection is unsorted you would need to use linear search to find the correct item. You may want to find a way to sort the items first to avoid having to iterate over one million numbers as linear search checks each item in order until it finds the last the item you are looking for. 
+
+6. Given a sorted collection of a million items, which algorithm would you choose between linear search and binary search? Explain your reasoning.
+	Given that the items are sorted you would be best to use binary search. This is much faster to search through 1 million items because it is splitting the list of items in half until it finds the desired item. 
+
+
+
+
+Programming Assignment
+
+1. You and a friend have set a wager to see who can find the world "Albatross" in the dictionary the fastest. Write a program to allow you to win the bet.
+
+function findItem(collection, value) {
+  var low = collection[0];
+  var high = collection.length-1;
+  
+  while (low <= high){
+    var mid = (low + high)/2;
+    
+    if(collection[mid] > value){
+      high = mid - 1;
+    } else if(collection[mid] < value){
+      low = mid + 1;
+    } else {
+      return mid;
+    }
+  }
+  return "not found";
+}
+
+
+
+2. You work at a pet store, and a child has asked you to net the only white-spotted goldfish from the fish tank. Write a program that will help you net the right fish. 
+
+var netFish = function(fishTank, desiredFish){
+  
+  for (var i = 0; i < fishTank.length; i++) {
+    var value = fishTank[i];
+    
+    if (value === desiredFish) {
+      return "You caught the " + desiredFish + " goldfish!";
+    } 
+  }
+}
+
+var fishTank= ["Brown", "Gold", "Black Spotted", "Gold Spotted", "White", "White Spotted", "Orange and Black Spotted"];
+var desiredFish = "White Spotted"; 
+
+console.log(netFish(fishTank, desiredFish));
