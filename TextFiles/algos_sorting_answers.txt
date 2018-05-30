@@ -1,0 +1,65 @@
+Exercises
+1. Write pseudocode for bubble sort.
+
+FUNCTION bubbleSort(collection)
+  REPEAT 
+    SET swapped to false
+    
+    FOR i = FIRST INDEX of collection
+      IF collection[i] > collection[i+1] THEN
+        SET temp to collection[i]
+        SET collection[i] to collection[i+1]
+        SET collection[i+1] to temp
+        SET swapped to true
+      END IF
+    END FOR
+    
+   UNTIL swapped is FALSE
+   
+   RETURN collection
+END FUNCTION
+
+2. Write pseudocode for quick sort.
+
+FUNCTION quickSort(collection)
+  SET pivot to LAST INDEX of collection
+  
+  FOR i = FIRST INDEX of collection
+    IF collection[i] > pivot
+      SET collection[i] to LAST INDEX of collection
+      SET pivot to CURRENT INDEX - 1 of collection
+    END IF 
+  END FOR
+  
+  SET mid to ROUND DOWN((LAST INDEX of collection - FIRST INDEX of collection) / 2)
+  
+  CALL quickSort WITH FIRST INDEX to mid - 1 elements of collection RETURNING left
+  CALL quickSort WITH mid to LAST INDEX elements of collection RETURNING right
+  
+FUNCTION merge(left, right)
+  INIT collection to empty array
+  
+  WHILE left AND right are NOT empty
+    APPEND FIRST element of left to collection
+    REMOVE FIRST element of left from left
+    APPEND FIRST element of right to collection
+    REMOVE FIRST element of right from right
+  END WHILE
+  
+  RETURN new array of collection
+  
+END FUNCTION
+
+3. We talked about the time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
+	Merge sort is O(n*log(n)). Although it has to iterate over every element in the array it does it so by breaking them in to smaller and smaller segments so that it does not need to iterate over every element in the array on each pass. 
+	Quick sort is also O(n*log(n)). Quick sort also uses dividing the array as a means of efficiency allowing the elements being iterated over to be smaller and smaller so that it takes less time to sort them. 
+
+4. All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+	In bucket sort you create "buckets" to hold elements in the array based on value and then sort each bucket individually. This works well for arrays of elements relatively equally distributed over a range. If there are too many elements that end up in 1 bucket because they are grouped so closely together this will make the bucket sort less useful and sluggish. 
+
+
+
+
+
+
+
