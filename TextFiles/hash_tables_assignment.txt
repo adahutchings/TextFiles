@@ -139,54 +139,53 @@ var HashTable = function(){
   var storage = [];
   var storageLimit = 100;
   
-  this.add = function(publisher, date, article){
-    var index = hash(publisher, storageLimit);
+  this.add = function(key, value){
+    var index = hash(key, storageLimit);
     
     if (storage[index] === undefined) {
       storage[index] = [
-        [ publisher, date, article]
+        [ key, value ]
       ];
     } else {
       var input = false;
       
       for(var i = 0; i < storage[index].length; i++) {
-        if(storage[index][i][0] === publisher) {
-          storage[index][i][1] = date;
-          storage[index][i][2] = article;
+        if(storage[index][i][0] === key) {
+          storage[index][i][1] = value;
           input = true;
         }
       }
       
       if (input === false){
-        storage[index].push([publisher, date, article]);
+        storage[index].push([key, value]);
       }
     }
   };
   
   
-  this.searchByPublisher = function(publisherName) {
-    var index = hash(publisherName, storageLimit);
+  this.searchPublisher = function(key) {
+    var index = hash(key, storageLimit);
     
     if (storage[index] === undefined) {
-      console.log("Publisher Not Found")
+      return "Not found";
     } else {
       for (var i = 0; i < storage[index].length; i++){
-        if(storage[index][i][0] === publisher) {
-        console.log("Date: " + storage[index][i][1] + " Article: " + storage[index][i][2]);
+        if(storage[index][i][0] === key) {
+        console.log("Search Returned: " + storage[index][i][1]);
+      	}
       }
-    }
     }
   };
   
-  this.searchByDate = function(date) {
-    var index = hash(date, storageLimit);
+  this.searchDate = function(value) {
+    var index = hash(value, storageLimit);
     
     if(storage[index] === undefined) {
-      console.log("Date Not Found");
+      return "Date Not Found";
     } else {
       for (var i = 0; i < storage[index].length; i ++) {
-        if (storage[index][I][1] === date) {
-          console.log("Published: " + storage[index][i][2] + " Publisher: " + storage[index][i][0]);
+        if (storage[index][i][1] === value) {
+          return "Search Returned: " + storage[index][i][2];
         }
       }
     }
@@ -199,7 +198,7 @@ var HashTable = function(){
 };
 
 var newspaperArticles = [
-  { article: "", publisher: "", date: ""}
+  { publisher: "", publicationDate: "", article: ""}
 ];
 
 
