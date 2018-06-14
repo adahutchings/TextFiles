@@ -26,26 +26,20 @@ Exercises
 
 5. Given a multi-dimensional collection (such as an array) where the number of dimensions is unknown, write a recursive algorithm to count the number of items in the entire collection.
 
-var findItemTotal = function(array, counter) {
-  
-  
-  if (counter < array.length){
-     return counter++ + findItemTotal(array, counter);
-     
-  } else {
-    return counter;
+var countedArray = function(array) {
+  let total = 0;
+  for (let i = 0; i < array.length; i ++) {
+    total += array[i].length ? countedArray(array[i]) : 1;
   }
-  
-  
+  return total;
 };
 
-var counter = 0;
-var array = [1, 2, 3, 4, 5, 6, 7];
 
-console.log(findItemTotal(array, counter));
-// returns 28	
+var array = [1, 2, [3, 4], 5, [6, 7, 8], 9];
 
+console.log('Total elements: ' + countedArray(array));
 
+// RETURNS: 'Total elements: 9'
 
 6. A palindrome is a world or phrase whose spelling is the same either direction. Write a recursive algorithm to determine if a given word or phrase is a palindrome.
 
